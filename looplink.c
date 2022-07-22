@@ -81,22 +81,18 @@ Looplink* delete_head(Looplink* L)
 //约瑟夫环
 void Circle(Looplink* L,int n,int m)
 {
-	Looplink* p = L;
 	Looplink* q = L;
 	while(n>0)
 	{
-		for(int i=1;i<3;i++)
+		for(int i=1;i<m-1;i++)
 		{
 			q=q->next;
 		}
-		for(int i=1;i<4;i++)
-		{
-			p=p->next;
-
-		}
+		Looplink* p = q->next;
 		q->next = p->next;
 		printf("%d\t",p->data);
-		p=p->next;
+		free(p);
+		p=NULL;
 		q=q->next;
 		n--;
 	}
